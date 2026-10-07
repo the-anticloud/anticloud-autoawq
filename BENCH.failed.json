@@ -1,0 +1,10 @@
+{
+  "project": "AUTOAWQ",
+  "category": "CHIP_QUANTIZATION",
+  "path": "E:\\fenta\\Downloads\\The Anticloud\\ANTICLOUD_REPOS\\CHIP_QUANTIZATION\\AUTOAWQ",
+  "status": "failed",
+  "reason": "no 40-hex git HEAD SHA (head='REMOVED_CONTAMINATED_SHA_PENDING_API_RESOLVE'; sanitized clone or .git absent)",
+  "files_count": 96,
+  "lines_of_code": 12074,
+  "sha": "REMOVED_CONTAMINATED_SHA_PENDING_API_RESOLVE"
+}

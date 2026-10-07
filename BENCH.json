@@ -1,0 +1,477 @@
+{
+ "schema": "anticloud.tier-bench/1",
+ "project": "AUTOAWQ",
+ "source": {
+  "repo_path": "E:\\fenta\\Downloads\\The Anticloud\\ANTICLOUD_REPOS\\CHIP_QUANTIZATION\\AUTOAWQ\\UPSTREAM_CLONE",
+  "git": {
+   "head": "REMOVED_CONTAMINATED_SHA_PENDING_API_RESOLVE",
+   "url": "https://github.com/the-anticloud/OPENMRS_CORE.git",
+   "branch": "master",
+   "committed_at": "2026-09-29T11:06:59+04:00",
+   "sha_verified_from": "local clone .git file read (no .git dir in clone)"
+  }
+ },
+ "metrics": {
+  "files_total": 96,
+  "source_files_scanned": 83,
+  "lines_of_code": 12074,
+  "languages": {
+   ".py": 87,
+   ".md": 5,
+   "(none)": 2,
+   ".yml": 1,
+   ".sh": 1
+  }
+ },
+ "licence": {
+  "spdx": "MIT",
+  "class": "A",
+  "source_file": "LICENSE",
+  "redistribution_allowed": true
+ },
+ "dependencies": {
+  "count": 8,
+  "unique": 8,
+  "by_ecosystem": {
+   "pypi": 8
+  },
+  "list": [
+   {
+    "ecosystem": "pypi",
+    "name": "transformers",
+    "version": ">=4.45.0",
+    "source_file": "setup.py",
+    "raw": "transformers>=4.45.0"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "tokenizers",
+    "version": ">=0.12.1",
+    "source_file": "setup.py",
+    "raw": "tokenizers>=0.12.1"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "typing_extensions",
+    "version": ">=4.8.0",
+    "source_file": "setup.py",
+    "raw": "typing_extensions>=4.8.0"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "datasets",
+    "version": ">=2.20",
+    "source_file": "setup.py",
+    "raw": "datasets>=2.20"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "huggingface_hub",
+    "version": ">=0.26.5",
+    "source_file": "setup.py",
+    "raw": "huggingface_hub>=0.26.5"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "lm_eval",
+    "version": "==0.4.1",
+    "source_file": "setup.py",
+    "raw": "lm_eval==0.4.1"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "intel-extension-for-pytorch",
+    "version": ">=2.4.0",
+    "source_file": "setup.py",
+    "raw": "intel-extension-for-pytorch>=2.4.0"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "flash-attn",
+    "version": ">=2.2.0",
+    "source_file": "setup.py",
+    "raw": "flash-attn>=2.2.0"
+   }
+  ]
+ },
+ "owasp_top10": {
+  "total_findings": 12,
+  "files_with_findings": 11,
+  "severity": {
+   "high": 3,
+   "medium": 1,
+   "low": 8
+  },
+  "categories": {
+   "A01-BrokenAccessControl": {
+    "count": 0,
+    "findings": []
+   },
+   "A02-CryptographicFailures": {
+    "count": 0,
+    "findings": []
+   },
+   "A03-Injection": {
+    "count": 3,
+    "findings": [
+     {
+      "severity": "high",
+      "file": "awq/models/base.py",
+      "line": 398,
+      "cwe": "CWE-95",
+      "snippet": "model.eval()"
+     },
+     {
+      "severity": "high",
+      "file": "awq/evaluation/eval_utils.py",
+      "line": 32,
+      "cwe": "CWE-95",
+      "snippet": "model = model.eval()"
+     },
+     {
+      "severity": "high",
+      "file": "awq/evaluation/humaneval_utils.py",
+      "line": 150,
+      "cwe": "CWE-95",
+      "snippet": "exec(check_program, exec_globals)"
+     }
+    ]
+   },
+   "A04-InsecureDesign": {
+    "count": 6,
+    "findings": [
+     {
+      "severity": "low",
+      "file": "awq/utils/qwen_vl_utils.py",
+      "line": 269,
+      "cwe": "CWE-",
+      "snippet": "# TODO: support start_pts and end_pts"
+     },
+     {
+      "severity": "low",
+      "file": "awq/quantize/quantizer.py",
+      "line": 577,
+      "cwe": "CWE-",
+      "snippet": "# use this Catcher hack for now"
+     },
+     {
+      "severity": "low",
+      "file": "awq/modules/fused/block.py",
+      "line": 399,
+      "cwe": "CWE-",
+      "snippet": "# TODO: Falcon has ALiBi implemented but which model uses it?"
+     },
+     {
+      "severity": "low",
+      "file": "awq/modules/fused/moe.py",
+      "line": 166,
+      "cwe": "CWE-",
+      "snippet": "gating_output.float(),  # TODO(woosuk): Optimize this."
+     },
+     {
+      "severity": "low",
+      "file": "awq/models/base.py",
+      "line": 53,
+      "cwe": "CWE-",
+      "snippet": "# Since we support different `AutoModelForxxx` from transformers"
+     },
+     {
+      "severity": "low",
+      "file": "awq/models/falcon.py",
+      "line": 16,
+      "cwe": "CWE-",
+      "snippet": "# TODO: Implement correctly fused modules for Falcon 40B and Falcon 180B"
+     }
+    ]
+   },
+   "A05-SecurityMisconfiguration": {
+    "count": 1,
+    "findings": [
+     {
+      "severity": "medium",
+      "file": "awq/models/_config.py",
+      "line": 11,
+      "cwe": "CWE-1188",
+      "snippet": "zero_point: bool = field(default=True)"
+     }
+    ]
+   },
+   "A06-VulnerableComponents": {
+    "count": 1,
+    "findings": [
+     {
+      "severity": "low",
+      "file": "setup.py",
+      "line": 50,
+      "cwe": "CWE-1104",
+      "snippet": "\"eval\": [\"lm_eval==0.4.1\", \"tabulate\", \"protobuf\", \"evaluate\", \"scipy\"],"
+     }
+    ]
+   },
+   "A07-AuthFailures": {
+    "count": 0,
+    "findings": []
+   },
+   "A08-SoftwareDataIntegrity": {
+    "count": 1,
+    "findings": [
+     {
+      "severity": "low",
+      "file": "awq/modules/triton/gemm.py",
+      "line": 9,
+      "cwe": "CWE-319",
+      "snippet": "# http://www.apache.org/licenses/LICENSE-2.0"
+     }
+    ]
+   },
+   "A09-LoggingMonitoringFailures": {
+    "count": 0,
+    "findings": []
+   },
+   "A10-SSRF": {
+    "count": 0,
+    "findings": []
+   }
+  }
+ },
+ "owasp_llm_top10": {
+  "total_findings": 13,
+  "files_with_findings": 13,
+  "severity": {
+   "high": 1,
+   "medium": 12,
+   "low": 0
+  },
+  "categories": {
+   "LLM01-PromptInjection": {
+    "count": 0,
+    "findings": []
+   },
+   "LLM02-SensitiveInfoDisclosure": {
+    "count": 1,
+    "findings": [
+     {
+      "severity": "high",
+      "file": "scripts/runpod_quantize.py",
+      "line": 6,
+      "cwe": "CWE-798",
+      "snippet": "HF_TOKEN = os.environ.get('HF_TOKEN')"
+     }
+    ]
+   },
+   "LLM03-SupplyChain": {
+    "count": 12,
+    "findings": [
+     {
+      "severity": "medium",
+      "file": "examples/benchmark.py",
+      "line": 115,
+      "cwe": "CWE-494",
+      "snippet": "model = AutoAWQForCausalLM.from_pretrained("
+     },
+     {
+      "severity": "medium",
+      "file": "examples/cli.py",
+      "line": 35,
+      "cwe": "CWE-494",
+      "snippet": "model = AutoAWQForCausalLM.from_pretrained("
+     },
+     {
+      "severity": "medium",
+      "file": "examples/eval.py",
+      "line": 25,
+      "cwe": "CWE-494",
+      "snippet": "model = AutoAWQForCausalLM.from_pretrained(model_path, safetensors=pretrained_safetensors)"
+     },
+     {
+      "severity": "medium",
+      "file": "examples/generate.py",
+      "line": 8,
+      "cwe": "CWE-494",
+      "snippet": "tokenizer = AutoTokenizer.from_pretrained(model_id)"
+     },
+     {
+      "severity": "medium",
+      "file": "examples/quantize.py",
+      "line": 9,
+      "cwe": "CWE-494",
+      "snippet": "model = AutoAWQForCausalLM.from_pretrained(model_path)"
+     },
+     {
+      "severity": "medium",
+      "file": "examples/train.py",
+      "line": 32,
+      "cwe": "CWE-494",
+      "snippet": "tokenizer = AutoTokenizer.from_pretrained(model_path)"
+     },
+     {
+      "severity": "medium",
+      "file": "awq/models/auto.py",
+      "line": 51,
+      "cwe": "CWE-494",
+      "snippet": "config = AutoConfig.from_pretrained("
+     },
+     {
+      "severity": "medium",
+      "file": "awq/models/base.py",
+      "line": 212,
+      "cwe": "CWE-494",
+      "snippet": "model = AutoAWQForCausalLM.from_pretrained(model_path)"
+     },
+     {
+      "severity": "medium",
+      "file": "awq/models/_config.py",
+      "line": 29,
+      "cwe": "CWE-494",
+      "snippet": "def from_pretrained(cls, save_dir: str, **kwargs):"
+     },
+     {
+      "severity": "medium",
+      "file": "awq/evaluation/eval_utils.py",
+      "line": 170,
+      "cwe": "CWE-494",
+      "snippet": "# model = AutoModelForCausalLM.from_pretrained(model_path, device_map=\"auto\")"
+     },
+     {
+      "severity": "medium",
+      "file": "awq/evaluation/humaneval_utils.py",
+      "line": 463,
+      "cwe": "CWE-494",
+      "snippet": "tokenizer = AutoTokenizer.from_pretrained(model_path)"
+     },
+     {
+      "severity": "medium",
+      "file": "awq/evaluation/kl_divergence.py",
+      "line": 153,
+      "cwe": "CWE-494",
+      "snippet": "tokenizer = AutoTokenizer.from_pretrained(ref_model_path)"
+     }
+    ]
+   },
+   "LLM04-DataPoisoning": {
+    "count": 0,
+    "findings": []
+   },
+   "LLM05-ImproperOutputHandling": {
+    "count": 0,
+    "findings": []
+   },
+   "LLM06-ExcessiveAgency": {
+    "count": 0,
+    "findings": []
+   },
+   "LLM07-SystemPromptLeak": {
+    "count": 0,
+    "findings": []
+   },
+   "LLM08-VectorEmbeddingWeaknesses": {
+    "count": 0,
+    "findings": []
+   },
+   "LLM09-Misinformation": {
+    "count": 0,
+    "findings": []
+   },
+   "LLM10-UnboundedConsumption": {
+    "count": 0,
+    "findings": []
+   }
+  }
+ },
+ "sbom": {
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:148879db-c222-5970-a681-b38a94483578",
+  "version": 1,
+  "metadata": {
+   "timestamp": "2026-10-06T10:07:40Z",
+   "component": {
+    "type": "application",
+    "name": "AUTOAWQ",
+    "version": "83b357604d34",
+    "bom-ref": "pkg:generic/anticloud/AUTOAWQ@83b357604d34",
+    "purl": "pkg:generic/anticloud/AUTOAWQ@83b357604d34",
+    "licenses": [
+     {
+      "license": {
+       "id": "MIT"
+      }
+     }
+    ]
+   },
+   "properties": [
+    {
+     "name": "anticloud:source-commit",
+     "value": "REMOVED_CONTAMINATED_SHA_PENDING_API_RESOLVE"
+    },
+    {
+     "name": "anticloud:source-url",
+     "value": "https://github.com/the-anticloud/OPENMRS_CORE.git"
+    },
+    {
+     "name": "anticloud:tier",
+     "value": "tier-agent"
+    }
+   ]
+  },
+  "components": [
+   {
+    "type": "library",
+    "name": "transformers",
+    "version": ">=4.45.0",
+    "purl": "pkg:pypi/transformers@4.45.0",
+    "bom-ref": "pypi/transformers@>=4.45.0"
+   },
+   {
+    "type": "library",
+    "name": "tokenizers",
+    "version": ">=0.12.1",
+    "purl": "pkg:pypi/tokenizers@0.12.1",
+    "bom-ref": "pypi/tokenizers@>=0.12.1"
+   },
+   {
+    "type": "library",
+    "name": "typing_extensions",
+    "version": ">=4.8.0",
+    "purl": "pkg:pypi/typing-extensions@4.8.0",
+    "bom-ref": "pypi/typing_extensions@>=4.8.0"
+   },
+   {
+    "type": "library",
+    "name": "datasets",
+    "version": ">=2.20",
+    "purl": "pkg:pypi/datasets@2.20",
+    "bom-ref": "pypi/datasets@>=2.20"
+   },
+   {
+    "type": "library",
+    "name": "huggingface_hub",
+    "version": ">=0.26.5",
+    "purl": "pkg:pypi/huggingface-hub@0.26.5",
+    "bom-ref": "pypi/huggingface_hub@>=0.26.5"
+   },
+   {
+    "type": "library",
+    "name": "lm_eval",
+    "version": "==0.4.1",
+    "purl": "pkg:pypi/lm-eval@0.4.1",
+    "bom-ref": "pypi/lm_eval@==0.4.1"
+   },
+   {
+    "type": "library",
+    "name": "intel-extension-for-pytorch",
+    "version": ">=2.4.0",
+    "purl": "pkg:pypi/intel-extension-for-pytorch@2.4.0",
+    "bom-ref": "pypi/intel-extension-for-pytorch@>=2.4.0"
+   },
+   {
+    "type": "library",
+    "name": "flash-attn",
+    "version": ">=2.2.0",
+    "purl": "pkg:pypi/flash-attn@2.2.0",
+    "bom-ref": "pypi/flash-attn@>=2.2.0"
+   }
+  ]
+ },
+ "elapsed_seconds": 8.0
+}
