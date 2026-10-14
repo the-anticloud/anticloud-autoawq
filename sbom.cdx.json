@@ -1,0 +1,103 @@
+{
+ "bomFormat": "CycloneDX",
+ "specVersion": "1.5",
+ "serialNumber": "urn:uuid:148879db-c222-5970-a681-b38a94483578",
+ "version": 1,
+ "metadata": {
+  "timestamp": "2026-10-06T10:07:40Z",
+  "component": {
+   "type": "application",
+   "name": "AUTOAWQ",
+   "version": "83b357604d34",
+   "bom-ref": "pkg:generic/anticloud/AUTOAWQ@83b357604d34",
+   "purl": "pkg:generic/anticloud/AUTOAWQ@83b357604d34",
+   "licenses": [
+    {
+     "license": {
+      "id": "MIT"
+     }
+    }
+   ]
+  },
+  "properties": [
+   {
+    "name": "anticloud:source-commit",
+    "value": "REMOVED_CONTAMINATED_SHA_PENDING_API_RESOLVE"
+   },
+   {
+    "name": "anticloud:source-url",
+    "value": "https://github.com/the-anticloud/OPENMRS_CORE.git"
+   },
+   {
+    "name": "anticloud:tier",
+    "value": "tier-agent"
+   }
+  ]
+ },
+ "components": [
+  {
+   "type": "library",
+   "name": "transformers",
+   "version": ">=4.45.0",
+   "purl": "pkg:pypi/transformers@4.45.0",
+   "bom-ref": "pypi/transformers@>=4.45.0"
+  },
+  {
+   "type": "library",
+   "name": "tokenizers",
+   "version": ">=0.12.1",
+   "purl": "pkg:pypi/tokenizers@0.12.1",
+   "bom-ref": "pypi/tokenizers@>=0.12.1"
+  },
+  {
+   "type": "library",
+   "name": "typing_extensions",
+   "version": ">=4.8.0",
+   "purl": "pkg:pypi/typing-extensions@4.8.0",
+   "bom-ref": "pypi/typing_extensions@>=4.8.0"
+  },
+  {
+   "type": "library",
+   "name": "datasets",
+   "version": ">=2.20",
+   "purl": "pkg:pypi/datasets@2.20",
+   "bom-ref": "pypi/datasets@>=2.20"
+  },
+  {
+   "type": "library",
+   "name": "huggingface_hub",
+   "version": ">=0.26.5",
+   "purl": "pkg:pypi/huggingface-hub@0.26.5",
+   "bom-ref": "pypi/huggingface_hub@>=0.26.5"
+  },
+  {
+   "type": "library",
+   "name": "lm_eval",
+   "version": "==0.4.1",
+   "purl": "pkg:pypi/lm-eval@0.4.1",
+   "bom-ref": "pypi/lm_eval@==0.4.1"
+  },
+  {
+   "type": "library",
+   "name": "intel-extension-for-pytorch",
+   "version": ">=2.4.0",
+   "purl": "pkg:pypi/intel-extension-for-pytorch@2.4.0",
+   "bom-ref": "pypi/intel-extension-for-pytorch@>=2.4.0"
+  },
+  {
+   "type": "library",
+   "name": "flash-attn",
+   "version": ">=2.2.0",
+   "purl": "pkg:pypi/flash-attn@2.2.0",
+   "bom-ref": "pypi/flash-attn@>=2.2.0"
+  }
+ ],
+ "source": {
+  "git": {
+   "head": null,
+   "url": null,
+   "sha_unverified": true,
+   "note": "contamination removed; resolve via GitHub API before quoting"
+  }
+ }
+}
